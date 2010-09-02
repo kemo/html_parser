@@ -1,11 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
- * Simple HTML DOM helper
- * 
- * based on http://simplehtmldom.sourceforge.net/ 
+ * Simple HTML DOM Helper
+ * ======================
+ * Usage example:
+ *
+ * $html = HTML_Parser::factory('http://kohanaframework.org');
+ * echo $html->find('title',0)->innertext;
+ *
+ * Look at http://simplehtmldom.sourceforge.net/ for docs & info
  *
  * @author	Kemal Delalic	<kemal.delalic@gmail.com>
+ *
+ * @uses	Kohana			find_file() method for finding simple_html_dom class
+ * @uses	Validate		url() method to differentiate URLs and HTML strings
+ * @uses	Simple_HTML_DOM	<http://simplehtmldom.sourceforge.net/>
  */
 abstract class Kohana_HTML_Parser {
 	
