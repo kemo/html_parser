@@ -48,7 +48,7 @@ abstract class Kohana_HTML_Parser {
 		
 		if( $html !== NULL )
 		{
-			if( Validate::url($html) )
+			if( valid::url($html) )
 			{
 				$this->_dom->load_file($html);
 			}
