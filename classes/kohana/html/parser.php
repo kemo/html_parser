@@ -46,16 +46,22 @@ abstract class Kohana_HTML_Parser {
 		
 		$this->_dom = new simple_html_dom;
 		
-		if( $html !== NULL )
+		if ($html !== NULL)
 		{
-			if( Validate::url($html) )
+			/**
+			 * If a valid URL has been passed, use Request to get contents
+			 *
+			 * This gives us the ability to debug, track & profile remote requests,
+			 * send different request parameters, etc.
+			 */
+			if (Valid::url($html))
 			{
-				$this->_dom->load_file($html);
+				$response = Request::factory($html)->execute();
+					
+				$html = $response->body();
 			}
-			else
-			{
-				$this->_dom->load($html);
-			}
+			
+			$this->_dom->load($html);
 		}
-	}	
+	}
 }
